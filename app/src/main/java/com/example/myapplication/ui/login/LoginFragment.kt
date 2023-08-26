@@ -27,6 +27,7 @@ class LoginFragment : Fragment() {
 
         val logando = view.findViewById<Button>(R.id.logando)
         val link_create = view.findViewById<TextView>(R.id.link_create)
+        val link_recuperar_senha = view.findViewById<TextView>(R.id.link_recuperar_senha)
 
         // Configura ação de clique para o botão "logando"
         logando.setOnClickListener {
@@ -39,6 +40,13 @@ class LoginFragment : Fragment() {
             // Navega para o fragmento de criar conta (R.id.nav_createAccount)
             findNavController().navigate(R.id.nav_createAccount)
         }
+
+        // Configura ação de clique para o botão "link_create"
+        link_recuperar_senha.setOnClickListener {
+            // Navega para o fragmento de criar conta (R.id.nav_createAccount)
+            findNavController().navigate(R.id.nav_reset_password)
+        }
+
 
         // Retorna a raiz do layout como a vista do fragmento
         return view

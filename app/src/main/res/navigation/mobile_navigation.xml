@@ -32,11 +32,26 @@
         tools:layout="@layout/fragment_login"/>
 
     <fragment android:id="@+id/menu_profile"
-
+        tools:layout="@layout/fragment_profile"
         />
 
     <fragment android:id="@+id/nav_createAccount"
         android:name="com.example.myapplication.ui.createAccount.CreateAccountFragment"
         android:label="@string/create_account"
         tools:layout="@layout/fragment_create_acconunt"/>
+
+    <fragment android:id="@+id/nav_reset_password"
+        android:name="com.example.myapplication.ui.resetPassword.ResetPassword"
+        android:label="@string/reset_password"
+        tools:layout="@layout/fragment_reset_password"/>
+
+    <fragment android:id="@+id/nav_new_password"
+        android:name="com.example.myapplication.ui.newPassword.NewPasswordFragment"
+        android:label="@string/new_password"
+        tools:layout="@layout/fragment_new_password"/>
+
+    <fragment android:id="@+id/nav_map"
+        android:name="com.example.myapplication.ui.map.MapFragment"
+        android:label="@string/pagina_map"
+        tools:layout="@layout/fragment_map"/>
 </navigation>

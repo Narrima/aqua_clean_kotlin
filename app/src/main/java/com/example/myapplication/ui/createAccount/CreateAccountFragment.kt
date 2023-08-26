@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentCreateAcconuntBinding
-import com.example.myapplication.ui.createAccount.CreateAccountViewModel
 
 class CreateAccountFragment : Fragment() {
 
@@ -22,13 +24,21 @@ class CreateAccountFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val assessmentsViewModel =
-            ViewModelProvider(this).get(CreateAccountViewModel::class.java)
+        val view = inflater.inflate(R.layout.fragment_create_acconunt, container, false)
 
-        _binding = FragmentCreateAcconuntBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        val create_login = view.findViewById<Button>(R.id.create_login)
+        val login_inicial = view.findViewById<TextView>(R.id.link_login_volta)
 
-        return root
+        login_inicial.setOnClickListener {
+            // Navegar para o fragmento de login
+            findNavController().navigate(R.id.nav_login)
+        }
+        create_login.setOnClickListener {
+            // Navega para o fragmento de favoritos (R.id.nav_favorites)
+            findNavController().navigate(R.id.nav_login)
+        }
+
+        return view
     }
 
     override fun onDestroyView() {
