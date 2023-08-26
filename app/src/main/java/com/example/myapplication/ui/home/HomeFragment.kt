@@ -4,9 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -22,14 +26,22 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        val login_inicial = view.findViewById<Button>(R.id.login_inicial)
+        val Create_account = view.findViewById<Button>(R.id.Create_account)
 
-
-        return root
+        // Configurar ação de clique para o botão
+        login_inicial.setOnClickListener {
+            // Navegar para o fragmento de login
+            findNavController().navigate(R.id.nav_login)
+        }
+        // Configurar ação de clique para o botão
+        Create_account.setOnClickListener {
+            // Navegar para o fragmento de login
+            findNavController().navigate(R.id.nav_createAccount)
+        }
+       return view
     }
 
     override fun onDestroyView() {

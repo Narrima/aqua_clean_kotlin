@@ -10,5 +10,6 @@
     <string name="menu_profile">Profile</string>
     <string name="menu_favorites">Favorites</string>
     <string name="menu_Assessments">Assessments</string>
-    <string name="menu_login">Login</string>
+    <string name="create_account">Create Account</string>
+    <string name="login">Login</string>
 </resources>
