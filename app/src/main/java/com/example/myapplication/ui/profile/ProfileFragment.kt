@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.newPassword
+package com.example.myapplication.ui.profile
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 
-
-class NewPasswordFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
     @SuppressLint("ResourceType")
     override fun onCreateView(
@@ -18,8 +17,7 @@ class NewPasswordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val view = inflater.inflate(R.layout.fragment_new_password, container, false)
-
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
         return view
     }

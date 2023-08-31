@@ -25,6 +25,11 @@ class LoginFragment : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
+        // Chame esta função em algum lugar apropriado da sua atividade
+
+        // Chama a função setHamburgerButtonVisibility e passa false como argumento
+
+
         val logando = view.findViewById<Button>(R.id.logando)
         val link_create = view.findViewById<TextView>(R.id.link_create)
         val link_recuperar_senha = view.findViewById<TextView>(R.id.link_recuperar_senha)

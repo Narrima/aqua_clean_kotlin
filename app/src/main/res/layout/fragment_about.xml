@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/corFundo"
+    tools:context=".ui.about.AboutFragment">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        app:srcCompat="@drawable/aqua_clean" />
+
+    <TextView
+        android:id="@+id/aboutText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bem-vindo ao Aqua Clean!"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/aboutText2"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:text="     O Aqua Clean é um aplicativo informativo desenvolvido para fornecer informações essenciais sobre a balneabilidade das águas em praias em todo o território brasileiro. Nosso objetivo é oferecer dados precisos e atualizados sobre a qualidade da água, para que o cidadão possa tomar decisões mais conscientes e seguras ao escolher onde nadar e se divertir."
+        android:layout_gravity="start|end"
+        app:layout_constraintEnd_toEndOf="@+id/aboutText1"
+        app:layout_constraintStart_toStartOf="@+id/aboutText1"
+        tools:layout_editor_absoluteY="365dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
