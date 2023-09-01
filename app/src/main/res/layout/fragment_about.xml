@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/corFundo"
-    tools:context=".ui.about.AboutFragment">
+    android:background="@color/corFundo">
 
 
     <ImageView
@@ -35,11 +34,13 @@
         android:id="@+id/aboutText2"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="     O Aqua Clean é um aplicativo informativo desenvolvido para fornecer informações essenciais sobre a balneabilidade das águas em praias em todo o território brasileiro. Nosso objetivo é oferecer dados precisos e atualizados sobre a qualidade da água, para que o cidadão possa tomar decisões mais conscientes e seguras ao escolher onde nadar e se divertir."
         android:layout_gravity="start|end"
+        android:layout_marginTop="60dp"
+        android:text="     O Aqua Clean é um aplicativo informativo desenvolvido para fornecer informações essenciais sobre a balneabilidade das águas em praias em todo o território brasileiro. Nosso objetivo é oferecer dados precisos e atualizados sobre a qualidade da água, para que o cidadão possa tomar decisões mais conscientes e seguras ao escolher onde nadar e se divertir."
         app:layout_constraintEnd_toEndOf="@+id/aboutText1"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="@+id/aboutText1"
-        tools:layout_editor_absoluteY="365dp" />
+        app:layout_constraintTop_toBottomOf="@+id/aboutText1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

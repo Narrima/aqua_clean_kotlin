@@ -117,7 +117,6 @@
     </fragment>
 
     <fragment android:id="@+id/nav_about"
-        android:name="com.example.myapplication.ui.about.AboutFragment"
         android:label="@string/About"
         tools:layout="@layout/fragment_about">
     </fragment>

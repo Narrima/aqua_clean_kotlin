@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,7 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.ui.about.AboutFragment
+import com.example.myapplication.ui.AboutFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,7 +51,6 @@ class MainActivity : AppCompatActivity() {
         // Configura o NavigationView para trabalhar com a navegação
         navView.setupWithNavController(navController)
 
-        // Chame a função que direciona automaticamente para a tela "About" quando a atividade é iniciada
 
     }
 
@@ -65,9 +63,15 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_about -> {
-                // Adicione a ação que você deseja realizar quando o item "About" for selecionado
-                val intent = Intent(this, AboutFragment::class.java)
-                startActivity(intent)
+                // Crie uma instância do fragmento AboutFragment
+                val aboutFragment = AboutFragment()
+
+                // Use o FragmentManager para substituir o conteúdo principal pelo fragmento AboutFragment
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.nav_host_fragment_content_main, aboutFragment)
+                    .addToBackStack(null) // Adicione à pilha de retorno se desejar
+                    .commit()
+
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
