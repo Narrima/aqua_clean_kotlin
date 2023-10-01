@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.myapplication.ui.home.HomeFragment"
+        android:name="com.example.myapplication.ui.fragment.HomeFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_home" >
 
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/nav_favorites"
-        android:name="com.example.myapplication.ui.favorites.FavoritesFragment"
+        android:name="com.example.myapplication.ui.fragment.FavoritesFragment"
         android:label="@string/menu_favorites"
         tools:layout="@layout/fragment_favorites" >
         <action
@@ -37,12 +37,12 @@
 
     <fragment
         android:id="@+id/nav_assessments"
-        android:name="com.example.myapplication.ui.assessments.AssessmentsFragment"
+        android:name="com.example.myapplication.ui.fragment.AssessmentsFragment"
         android:label="@string/menu_Assessments"
         tools:layout="@layout/fragment_assessments" />
 
     <fragment android:id="@+id/nav_login"
-        android:name="com.example.myapplication.ui.login.LoginFragment"
+        android:name="com.example.myapplication.ui.fragment.LoginFragment"
         android:label="@string/login"
         tools:layout="@layout/fragment_login">
         <action
@@ -57,7 +57,7 @@
     </fragment>
 
     <fragment android:id="@+id/nav_profile"
-        android:name="com.example.myapplication.ui.profile.ProfileFragment"
+        android:name="com.example.myapplication.ui.fragment.ProfileFragment"
         tools:layout="@layout/fragment_profile"
         >
         <action
@@ -72,7 +72,7 @@
     </fragment>
 
     <fragment android:id="@+id/nav_createAccount"
-        android:name="com.example.myapplication.ui.createAccount.CreateAccountFragment"
+        android:name="com.example.myapplication.ui.fragment.CreateAccountFragment"
         android:label="@string/create_account"
         tools:layout="@layout/fragment_create_acconunt">
         <action
@@ -84,7 +84,7 @@
     </fragment>
 
     <fragment android:id="@+id/nav_reset_password"
-        android:name="com.example.myapplication.ui.resetPassword.ResetPassword"
+        android:name="com.example.myapplication.ui.fragment.ResetPassword"
         android:label="@string/reset_password"
         tools:layout="@layout/fragment_reset_password">
         <action
@@ -93,7 +93,7 @@
     </fragment>
 
     <fragment android:id="@+id/nav_new_password"
-        android:name="com.example.myapplication.ui.newPassword.NewPasswordFragment"
+        android:name="com.example.myapplication.ui.fragment.NewPasswordFragment"
         android:label="@string/new_password"
         tools:layout="@layout/fragment_new_password">
         <action
@@ -102,7 +102,7 @@
     </fragment>
 
     <fragment android:id="@+id/nav_map"
-        android:name="com.example.myapplication.ui.map.MapFragment"
+        android:name="com.example.myapplication.ui.fragment.MapFragment"
         android:label="@string/pagina_map"
         tools:layout="@layout/fragment_map">
         <action

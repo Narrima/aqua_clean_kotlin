@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.ui.AboutFragment
+import com.example.myapplication.ui.fragment.AboutFragment
 
 class MainActivity : AppCompatActivity() {
 
