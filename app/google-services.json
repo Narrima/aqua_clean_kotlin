@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "927370572837",
+    "project_id": "aqua-clean-first",
+    "storage_bucket": "aqua-clean-first.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:927370572837:android:9fb743f29e46e55eba3bcc",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeBOdc7qmmx1HNf2rrzhDDxVtuX6HJXOU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
