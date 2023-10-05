@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
-import com.example.myapplication.databinding.FragmentCreateAcconuntBinding
+import com.example.myapplication.databinding.FragmentCreateAccountBinding
 import com.example.myapplication.extensions.snackBar
 import com.example.myapplication.model.Usuario
 
@@ -23,7 +23,7 @@ class CreateAccountFragment : Fragment() {
 
     private val viewModel: CadastroUsuarioViewModel by viewModel()
 
-    private var _binding: FragmentCreateAcconuntBinding? = null
+    private var _binding: FragmentCreateAccountBinding? = null
 
     //     This property is only valid between onCreateView and
 //     onDestroyView.
@@ -34,7 +34,7 @@ class CreateAccountFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCreateAcconuntBinding.inflate(inflater, container, false)
+        _binding = FragmentCreateAccountBinding.inflate(inflater, container, false)
         val view = binding.root
 
 //        val create_login = view.findViewById<Button>(R.id.create_login)

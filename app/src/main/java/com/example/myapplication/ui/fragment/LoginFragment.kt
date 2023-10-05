@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -53,7 +54,7 @@ class LoginFragment : Fragment() {
 
 
 //        val logando = view.findViewById<Button>(R.id.logando)
-//        val link_create = view.findViewById<TextView>(R.id.link_create)
+            val link_create = view.findViewById<TextView>(R.id.link_create)
 //        val link_recuperar_senha = view.findViewById<TextView>(R.id.link_recuperar_senha)
 //
 //        // Configura ação de clique para o botão "logando"
@@ -62,11 +63,11 @@ class LoginFragment : Fragment() {
 //            findNavController().navigate(R.id.nav_favorites)
 //        }
 //
-//        // Configura ação de clique para o botão "link_create"
-//        link_create.setOnClickListener {
-//            // Navega para o fragmento de criar conta (R.id.nav_createAccount)
-//            findNavController().navigate(R.id.nav_createAccount)
-//        }
+        // Configura ação de clique para o botão "link_create"
+        link_create.setOnClickListener {
+          //  Navega para o fragmento de criar conta
+           findNavController().navigate(R.id.nav_createAccount)
+        }
 //
 //        // Configura ação de clique para o botão "link_create"
 //        link_recuperar_senha.setOnClickListener {
