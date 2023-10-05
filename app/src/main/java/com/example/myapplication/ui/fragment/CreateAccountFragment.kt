@@ -1,9 +1,12 @@
 package com.example.myapplication.ui.fragment
 
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -36,6 +39,32 @@ class CreateAccountFragment : Fragment() {
 
 //        val create_login = view.findViewById<Button>(R.id.create_login)
 //        val login_inicial = view.findViewById<TextView>(R.id.link_login_volta)
+        val senhaEditText = view.findViewById<EditText>(R.id.create_senha)
+        val senhaEditText2 = view.findViewById<EditText>(R.id.create_confirma_senha)
+        val showPasswordButton1 = view.findViewById<ImageButton>(R.id.show_password_button)
+        val showPasswordButton2 = view.findViewById<ImageButton>(R.id.show_password_button2)
+
+        var isPasswordVisible = false
+
+        fun togglePasswordVisibility() {
+            isPasswordVisible = !isPasswordVisible
+            if (isPasswordVisible) {
+                senhaEditText.transformationMethod = null // Torna a senha visível
+                senhaEditText2.transformationMethod = null // Torna a senha visível
+                showPasswordButton1.setImageResource(R.drawable.olho_aberto) // Atualiza o ícone do primeiro botão
+                showPasswordButton2.setImageResource(R.drawable.olho_aberto) // Atualiza o ícone do segundo botão
+            } else {
+                senhaEditText.transformationMethod = PasswordTransformationMethod() // Oculta a senha
+                senhaEditText2.transformationMethod = PasswordTransformationMethod() // Oculta a senha
+                showPasswordButton1.setImageResource(R.drawable.olho_fechado) // Atualiza o ícone do primeiro botão
+                showPasswordButton2.setImageResource(R.drawable.olho_fechado) // Atualiza o ícone do segundo botão
+            }
+        }
+
+        showPasswordButton1.setOnClickListener { togglePasswordVisibility() }
+        showPasswordButton2.setOnClickListener { togglePasswordVisibility() }
+
+
 //
 //        login_inicial.setOnClickListener {
 //            // Navegar para o fragmento de login

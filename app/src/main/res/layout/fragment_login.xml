@@ -56,7 +56,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="70dp"
         android:background="@drawable/caixa_texto_borda"
-        android:hint="Username"
+        android:hint="Email"
         android:gravity="center"
         android:drawableLeft="@drawable/usuario"
         android:inputType="text"
