@@ -1,6 +1,8 @@
 package com.example.myapplication
 
+import android.nfc.Tag
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.navigation.NavigationView
@@ -13,6 +15,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.ui.fragment.AboutFragment
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+
+private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,6 +56,14 @@ class MainActivity : AppCompatActivity() {
 
         // Configura o NavigationView para trabalhar com a navegação
         navView.setupWithNavController(navController)
+
+//        Firebase.auth.signInWithEmailAndPassword("suzanateste@tuamaeaquelaursa.com", "teste123")
+//            .addOnSuccessListener {
+//                Log.i(TAG, "onCrate: usuário está logado" )
+//            }
+//            .addOnFailureListener {
+//                Log.e(TAG,"onCrate: Usuário não logado")
+//            }
 
 
     }

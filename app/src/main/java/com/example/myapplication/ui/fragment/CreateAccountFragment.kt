@@ -5,7 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentCreateAcconuntBinding
+import com.example.myapplication.extensions.snackBar
+import com.example.myapplication.model.Usuario
 
 import com.example.myapplication.ui.viewModel.CadastroUsuarioViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -14,8 +19,6 @@ class CreateAccountFragment : Fragment() {
 
 
     private val viewModel: CadastroUsuarioViewModel by viewModel()
-
-//    private lateinit var binding: FragmentCreateAcconuntBinding
 
     private var _binding: FragmentCreateAcconuntBinding? = null
 
@@ -47,15 +50,65 @@ class CreateAccountFragment : Fragment() {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.createLogin.setOnClickListener{
+
+            limparCampos()
+
             val email: String = binding.createEmail.editableText.toString()
             val senha = binding.createSenha.editableText.toString()
-            viewModel.cadastra(email , senha)
+            val confirma = binding.createConfirmaSenha.editableText.toString()
+
+            val valido = validaCampos(email, senha, confirma)
+
+            if(valido){
+                cadastra(Usuario(email, senha))
+            }
+
         }
 
+    }
+
+    private fun cadastra(usuario: Usuario) {
+        viewModel.cadastra(usuario).observe(viewLifecycleOwner, Observer {
+            it?.let { recurso ->
+                if (recurso.dado) {
+                    view?.snackBar("Cadastro realizado com sucesso")
+                    findNavController().navigate(R.id.nav_login)
+                } else {
+                    val mensagemErro = recurso.erro ?: "Ocorreu uma falha no cadastro"
+                    view?.snackBar(mensagemErro)
+                }
+
+            }
+        })
+    }
+
+    private fun validaCampos(email: String, senha: String, confirma: String): Boolean {
+        var valido = true
+
+        if (email.isBlank()) {
+            binding.createEmail.error = "O campo e-mail é obrigatório"
+            valido = false
+        }
+
+        if (senha.isBlank()) {
+            binding.createSenha.error = "O campo senha é obrigatório"
+            valido = false
+        }
+
+        if (senha != confirma) {
+            binding.createConfirmaSenha.error = "As senhas não conferem"
+            valido = false
+        }
+        return valido
+    }
+
+    private fun limparCampos() {
+        binding.createEmail.error = null
+        binding.createSenha.error = null
+        binding.createSenha.error = null
     }
 
     override fun onDestroyView() {
