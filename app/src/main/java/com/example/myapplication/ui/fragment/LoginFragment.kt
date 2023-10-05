@@ -1,9 +1,12 @@
 package com.example.myapplication.ui.fragment
 
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -31,9 +34,22 @@ class LoginFragment : Fragment() {
         _binding  = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        // Chame esta função em algum lugar apropriado da sua atividade
+        val senhaEditText = view.findViewById<EditText>(R.id.login_senha)
+        val showPasswordButton = view.findViewById<ImageButton>(R.id.show_password_login)
 
-        // Chama a função setHamburgerButtonVisibility e passa false como argumento
+        var isPasswordVisible = false
+
+        fun togglePassword() {
+            isPasswordVisible = !isPasswordVisible
+            if (isPasswordVisible) {
+                senhaEditText.transformationMethod = null // Torna a senha visível
+                showPasswordButton.setImageResource(R.drawable.olho_aberto) // Atualiza o ícone do primeiro botão
+            } else {
+                senhaEditText.transformationMethod = PasswordTransformationMethod() // Oculta a senha
+                showPasswordButton.setImageResource(R.drawable.olho_fechado) // Atualiza o ícone do primeiro botão
+            }
+        }
+        showPasswordButton.setOnClickListener { togglePassword() }
 
 
 //        val logando = view.findViewById<Button>(R.id.logando)
