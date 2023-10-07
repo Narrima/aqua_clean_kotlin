@@ -6,6 +6,7 @@
     <string name="nav_header_subtitle"> </string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="About">About</string>
+    <string name="Welcome">Bem vindo</string>
 
     <string name="menu_profile">Perfil</string>
     <string name="menu_favorites">Praias favoritas</string>

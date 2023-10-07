@@ -13,6 +13,9 @@ import com.example.myapplication.databinding.FragmentFavoritesBinding
 class FavoritesFragment : Fragment() {
 
     private var _binding: FragmentFavoritesBinding? = null
+    private var isStarSelected1 = true
+    private var isStarSelected2 = true
+    private var isStarSelected3 = true
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -27,24 +30,23 @@ class FavoritesFragment : Fragment() {
         _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        var isStarSelected = false
-
-        val starButton = root.findViewById<ImageButton>(R.id.starButton)
-        starButton.setOnClickListener {
-            isStarSelected = !isStarSelected
-            updateStarButtonState(starButton, isStarSelected)
-        }
-
+        val starButton1 = root.findViewById<ImageButton>(R.id.starButton)
         val starButton2 = root.findViewById<ImageButton>(R.id.starButton2)
-        starButton2.setOnClickListener {
-            isStarSelected = !isStarSelected
-            updateStarButtonState(starButton2, isStarSelected)
+        val starButton3 = root.findViewById<ImageButton>(R.id.starButton3)
+
+        starButton1.setOnClickListener {
+            isStarSelected1 = !isStarSelected1
+            updateStarButtonState(starButton1, isStarSelected1)
         }
 
-        val starButton3 = root.findViewById<ImageButton>(R.id.starButton3)
+        starButton2.setOnClickListener {
+            isStarSelected2 = !isStarSelected2
+            updateStarButtonState(starButton2, isStarSelected2)
+        }
+
         starButton3.setOnClickListener {
-            isStarSelected = !isStarSelected
-            updateStarButtonState(starButton3, isStarSelected)
+            isStarSelected3 = !isStarSelected3
+            updateStarButtonState(starButton3, isStarSelected3)
         }
 
         return root
