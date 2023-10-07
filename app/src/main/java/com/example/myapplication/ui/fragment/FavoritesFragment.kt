@@ -57,9 +57,4 @@ class FavoritesFragment : Fragment() {
             starButton.setImageResource(R.drawable.estrela_favoritada)
         }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
