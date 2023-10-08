@@ -19,35 +19,97 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/usuario_estendido" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="25dp"
-        android:orientation="vertical"
-        android:background="@drawable/caixa_texto_borda"
-        android:padding="16dp"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="567dp"
+        android:layout_height="439dp"
+        android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Título Fixo:"
-            android:textSize="18sp" />
-
-        <!-- Caixa de Texto Editável -->
-        <EditText
-            android:id="@+id/TextoEditText"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="top|start"
-            android:hint="Digite o segundo texto"
-            android:inputType="text"
-            android:lines="2" />
-    </LinearLayout>
+            android:layout_height="100dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/caixa_texto_borda"
+            android:orientation="vertical"
+            android:padding="16dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ativo desde:"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/TextoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:gravity="top|start"
+                android:hint="Digite o segundo texto"
+                android:inputType="text"
+                android:lines="2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/caixa_texto_borda"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ativo desde:"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/TextoEditText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:gravity="top|start"
+                android:hint="Digite o segundo texto"
+                android:inputType="text"
+                android:lines="2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/caixa_texto_borda"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ativo desde:"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/TextoEditText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:gravity="top|start"
+                android:hint="Digite o segundo texto"
+                android:inputType="text"
+                android:lines="2" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
