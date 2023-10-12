@@ -43,14 +43,12 @@
                 android:text="Ativo desde:"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/TextoEditText"
+            <TextView
+                android:id="@+id/meu_perfil_ativo_desde"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:gravity="top|start"
-                android:hint="Digite o segundo texto"
-                android:inputType="text"
                 android:lines="2" />
         </LinearLayout>
 
@@ -67,11 +65,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ativo desde:"
+                android:text="Nome do Usuário:"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/TextoEditText2"
+                android:id="@+id/meu_perfil_nome_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
@@ -95,17 +93,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ativo desde:"
+                android:text="E-mail:"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/TextoEditText3"
+            <TextView
+                android:id="@+id/meu_perfil_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:gravity="top|start"
-                android:hint="Digite o segundo texto"
-                android:inputType="text"
                 android:lines="2" />
 
         </LinearLayout>

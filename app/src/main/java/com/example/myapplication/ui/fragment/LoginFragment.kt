@@ -84,22 +84,45 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.logando.setOnClickListener{
 
+            limpaCapos()
+
             val email: String = binding.loginUsuario.editableText.toString()
             val senha: String = binding.loginSenha.editableText.toString()
 
-            viewModel.autenticaUsuario(Usuario(email, senha)).observe(viewLifecycleOwner, Observer {
-                it?.let {recurso ->
-                    if(recurso.dado){
-                        getView()?.snackBar("Login realizado com sucesso")
-                        findNavController().navigate(R.id.nav_favorites)
-                    } else {
-                        val mensagemErro = recurso.erro ?: "Erro durante a autenticação"
-                        getView()?.snackBar(mensagemErro)
-                    }
-                }
-            })
-
+           if(validaCamposVazios(email, senha)) {
+               viewModel.autenticaUsuario(Usuario(email, senha)).observe(viewLifecycleOwner, Observer {
+                   it?.let {recurso ->
+                       if(recurso.dado){
+                           getView()?.snackBar("Login realizado com sucesso")
+                           findNavController().navigate(R.id.nav_favorites)
+                       } else {
+                           val mensagemErro = recurso.erro ?: "Erro durante a autenticação"
+                           getView()?.snackBar(mensagemErro)
+                       }
+                   }
+               })
+           }
         }
+    }
+
+    private fun validaCamposVazios(email: String, senha: String): Boolean {
+        var valido = true
+
+        if (email.isBlank()){
+            binding.loginUsuario.error = "O campo e-mail é obrigatório."
+            valido = false
+        }
+
+        if (senha.isBlank()){
+            binding.loginSenha.error = "O campo senha é obrigatório."
+            valido = false
+        }
+        return valido
+    }
+
+    private fun limpaCapos(){
+        binding.loginUsuario.error = null
+        binding.loginSenha.error = null
     }
 
     override fun onDestroyView() {

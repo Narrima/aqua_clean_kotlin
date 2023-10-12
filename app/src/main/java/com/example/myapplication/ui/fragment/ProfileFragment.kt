@@ -6,9 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentLoginBinding
+import com.example.myapplication.databinding.FragmentProfileBinding
+import com.example.myapplication.model.Usuario
+import com.example.myapplication.ui.viewModel.PerfilUsuarioViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileFragment : Fragment() {
+
+    private val viewModel : PerfilUsuarioViewModel by viewModel()
+
+    private var _binding: FragmentProfileBinding? = null
+
+    // Esta propriedade só é válida entre onCreateView e onDestroyView.
+    private val binding get() = _binding!!
 
     @SuppressLint("ResourceType")
     override fun onCreateView(
@@ -17,10 +30,18 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        _binding  = FragmentProfileBinding.inflate(inflater, container, false)
+        val view = binding.root
 
         return view
     }
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.usuario.observe(viewLifecycleOwner, Observer {
+            it?.let { usuario ->
+                binding.meuPerfilEmail.text = usuario.email
+            }
+        })
+    }
 }

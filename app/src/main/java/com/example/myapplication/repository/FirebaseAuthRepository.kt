@@ -66,21 +66,41 @@ class FirebaseAuthRepository(private val firebaseAuth: FirebaseAuth) {
 
     fun autentica(usuario: Usuario) : LiveData<Resource<Boolean>> {
         val liveData = MutableLiveData<Resource<Boolean>>()
-        firebaseAuth.signInWithEmailAndPassword(usuario.email, usuario.senha)
-            .addOnCompleteListener {  tarefa ->
-                if(tarefa.isSuccessful){
-                    liveData.value = Resource(true)
-                } else {
-                    Log.e(TAG, "autentica: ", tarefa.exception)
-                    val mensagemErro: String = when(tarefa.exception){
-                        is FirebaseAuthInvalidUserException -> "E-mail inválido"
-                        is FirebaseAuthInvalidCredentialsException -> "E-mail ou senha inválidos"
-                        else -> "Erro desconhecido"
+        try {
+            firebaseAuth.signInWithEmailAndPassword(usuario.email, usuario.senha)
+                .addOnCompleteListener {  tarefa ->
+                    if(tarefa.isSuccessful){
+                        liveData.value = Resource(true)
+                    } else {
+                        Log.e(TAG, "autentica: ", tarefa.exception)
+                        val mensagemErro: String = devolveErroLogin(tarefa.exception)
+                        liveData.value = Resource(false, mensagemErro)
                     }
-                    liveData.value = Resource(false, mensagemErro)
-                }
 
+                }
+        } catch (e: IllegalArgumentException) {
+            liveData.value = Resource(false, "E-mail ou senha não pode ser vazio")
+        }
+        return liveData
+    }
+
+    private fun devolveErroLogin(exception: Exception?): String {
+        return when (exception) {
+            is FirebaseAuthInvalidUserException -> "E-mail inválido"
+            is FirebaseAuthInvalidCredentialsException -> "E-mail ou senha inválidos"
+            else -> "Erro desconhecido"
+        }
+    }
+
+    fun usuario(): LiveData<Usuario> {
+        val liveData = MutableLiveData<Usuario>()
+        firebaseAuth.currentUser?.let {firebaseUser ->
+            firebaseUser.email?.let {email ->
+                liveData.value = Usuario(email)
             }
+
+        }
+
         return liveData
     }
 
