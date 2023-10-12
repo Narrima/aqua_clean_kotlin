@@ -2,6 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -11,10 +12,8 @@
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            xmlns:tools="http://schemas.android.com/tools"
             android:background="@color/corFundo"
             tools:context=".ui.fragment.CreateAccountFragment">
 
@@ -45,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="Welcome"
+                android:text="@string/Welcome"
                 android:textSize="34sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -57,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:text="Create your account"
+                android:text="Criando sua conta"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -108,6 +107,16 @@
                 app:layout_constraintStart_toStartOf="@+id/create_email"
                 app:layout_constraintTop_toBottomOf="@+id/create_email"/>
 
+            <ImageButton
+                android:id="@+id/show_password_button"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/olho_fechado"
+                app:layout_constraintBottom_toBottomOf="@+id/create_senha"
+                app:layout_constraintEnd_toEndOf="@+id/create_senha"
+                app:layout_constraintTop_toTopOf="@+id/create_senha" />
+
             <EditText
                 android:id="@+id/create_confirma_senha"
                 android:layout_width="300dp"
@@ -122,6 +131,17 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/create_senha"
                 app:layout_constraintTop_toBottomOf="@+id/create_senha" />
+
+
+            <ImageButton
+                android:id="@+id/show_password_button2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/olho_fechado"
+                app:layout_constraintBottom_toBottomOf="@+id/create_confirma_senha"
+                app:layout_constraintEnd_toEndOf="@+id/create_confirma_senha"
+                app:layout_constraintTop_toTopOf="@+id/create_confirma_senha" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -153,13 +173,15 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="Already have an Account? Login"
+                android:text="Você já possui uma conta? Clique aqui"
                 android:textColor="#007AFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/create_login"
                 app:layout_constraintVertical_bias="0.1" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
