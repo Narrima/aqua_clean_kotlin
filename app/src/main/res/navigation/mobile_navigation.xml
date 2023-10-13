@@ -33,13 +33,20 @@
         <action
             android:id="@+id/action_nav_favorites_to_nav_map"
             app:destination="@id/nav_map" />
+        <action
+            android:id="@+id/action_nav_favorites_to_nav_logout"
+            app:destination="@id/nav_logout" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_assessments"
         android:name="com.example.myapplication.ui.fragment.AssessmentsFragment"
         android:label="@string/menu_Assessments"
-        tools:layout="@layout/fragment_assessments" />
+        tools:layout="@layout/fragment_assessments" >
+        <action
+            android:id="@+id/action_nav_assessments_to_nav_logout"
+            app:destination="@id/nav_logout" />
+    </fragment>
 
     <fragment android:id="@+id/nav_login"
         android:name="com.example.myapplication.ui.fragment.LoginFragment"
@@ -69,6 +76,9 @@
         <action
             android:id="@+id/action_menu_profile_to_nav_map"
             app:destination="@id/nav_map" />
+        <action
+            android:id="@+id/action_nav_profile_to_nav_logout"
+            app:destination="@id/nav_logout" />
     </fragment>
 
     <fragment android:id="@+id/nav_createAccount"
@@ -114,10 +124,19 @@
         <action
             android:id="@+id/action_nav_map_to_nav_assessments"
             app:destination="@id/nav_assessments" />
+        <action
+            android:id="@+id/action_nav_map_to_nav_logout"
+            app:destination="@id/nav_logout" />
     </fragment>
 
     <fragment android:id="@+id/nav_about"
         android:label="@string/About"
         tools:layout="@layout/fragment_about">
+    </fragment>
+
+    <fragment android:id="@+id/nav_logout"
+        android:name="com.example.myapplication.ui.fragment.LoginFragment"
+        android:label="@string/logout"
+        tools:layout="@layout/fragment_login">
     </fragment>
 </navigation>

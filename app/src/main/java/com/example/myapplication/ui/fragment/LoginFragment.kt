@@ -15,7 +15,9 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentLoginBinding
 import com.example.myapplication.extensions.snackBar
 import com.example.myapplication.model.Usuario
+import com.example.myapplication.repository.FirebaseAuthRepository
 import com.example.myapplication.ui.viewModel.LoginViewModel
+import com.google.firebase.auth.FirebaseAuth
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
@@ -35,10 +37,13 @@ class LoginFragment : Fragment() {
         _binding  = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        val authManager = FirebaseAuthRepository(FirebaseAuth.getInstance())
         val senhaEditText = view.findViewById<EditText>(R.id.login_senha)
         val showPasswordButton = view.findViewById<ImageButton>(R.id.show_password_login)
 
         var isPasswordVisible = false
+
+        authManager.fazerLogout()
 
         fun togglePassword() {
             isPasswordVisible = !isPasswordVisible
