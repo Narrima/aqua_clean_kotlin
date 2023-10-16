@@ -21,7 +21,10 @@
             android:id="@+id/nav_assessments"
             android:icon="@drawable/premioestrela"
             android:title="@string/menu_Assessments" />
-
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logout_box"
+            android:title="@string/logout" />
 
     </group>
 </menu>
