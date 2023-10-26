@@ -4,59 +4,72 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
+import android.widget.LinearLayout.VERTICAL
 import androidx.fragment.app.Fragment
-import com.example.myapplication.R
-import com.example.myapplication.databinding.FragmentFavoritesBinding
+import androidx.recyclerview.widget.DividerItemDecoration
+import com.example.myapplication.databinding.FragmentListaFavoritosBinding
+import com.example.myapplication.ui.recyclerviewadapter.FavoritosAdapter
+import com.example.myapplication.ui.viewModel.FavoritosViewModel
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class FavoritesFragment : Fragment() {
 
-    private var _binding: FragmentFavoritesBinding? = null
-    private var isStarSelected1 = true
-    private var isStarSelected2 = true
-    private var isStarSelected3 = true
+    private val viewModel : FavoritosViewModel by viewModel()
+//    @Suppress("DEPRECATION")
+//    private val estadoAppViewModel: EstadoAppViewModel by sharedViewModel()
+    private val adapter: FavoritosAdapter by inject()
+//    private val controlador by lazy {
+//        findNavController()
+//    }
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private var _binding: FragmentListaFavoritosBinding? = null
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        buscarProdutos()
+    }
+
+    private fun buscarProdutos() {
+        viewModel.buscarFavoritos().observe(this) { favoritosEncontrados ->
+            favoritosEncontrados?.let {
+                adapter.atualiza(it)
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        _binding  = FragmentListaFavoritosBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-        val starButton1 = root.findViewById<ImageButton>(R.id.starButton)
-        val starButton2 = root.findViewById<ImageButton>(R.id.starButton2)
-        val starButton3 = root.findViewById<ImageButton>(R.id.starButton3)
-
-        starButton1.setOnClickListener {
-            isStarSelected1 = !isStarSelected1
-            updateStarButtonState(starButton1, isStarSelected1)
-        }
-
-        starButton2.setOnClickListener {
-            isStarSelected2 = !isStarSelected2
-            updateStarButtonState(starButton2, isStarSelected2)
-        }
-
-        starButton3.setOnClickListener {
-            isStarSelected3 = !isStarSelected3
-            updateStarButtonState(starButton3, isStarSelected3)
-        }
-
-        return root
+        return view
     }
 
-    private fun updateStarButtonState(starButton: ImageButton, isStarSelected: Boolean) {
-        if (isStarSelected) {
-            starButton.setImageResource(R.drawable.estrela)
-        } else {
-            starButton.setImageResource(R.drawable.estrela_favoritada)
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+//        estadoAppViewModel.temComponentes = EstadoAppViewModel.ComponentesVisuais(
+//            appBar = false,
+//            bottomNavigation = true)
+        configurarRecyclerView()
     }
+
+    private fun configurarRecyclerView() {
+        val divisor = DividerItemDecoration(context, VERTICAL)
+        binding.listaFavoritosRecyclerview.addItemDecoration(divisor)
+        binding.listaFavoritosRecyclerview.adapter = adapter
+    }
+
+//        private fun updateStarButtonState(starButton: ImageButton, isStarSelected: Boolean) {
+//        if (isStarSelected) {
+//            starButton.setImageResource(R.drawable.estrela)
+//        } else {
+//            starButton.setImageResource(R.drawable.estrela_favoritada)
+//        }
+//    }
 }
