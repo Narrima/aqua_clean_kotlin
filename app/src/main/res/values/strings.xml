@@ -10,7 +10,7 @@
     <string name="logout">Logout</string>
     <string name="menu_profile">Perfil</string>
     <string name="menu_favorites">Praias favoritas</string>
-    <string name="menu_Assessments">Melhores praias</string>
+    <string name="menu_Assessments">Buscar praias</string>
     <string name="create_account">Criar conta</string>
     <string name="login">Login</string>
     <string name="reset_password">Recuperar Senha</string>
