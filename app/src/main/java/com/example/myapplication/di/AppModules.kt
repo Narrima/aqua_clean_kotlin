@@ -1,7 +1,7 @@
 package com.example.myapplication.di
 
 import com.example.myapplication.databinding.FragmentListaFavoritosBinding
-import com.example.myapplication.repository.FavotirosRepository
+import com.example.myapplication.repository.FavoritosRepository
 import com.example.myapplication.repository.FirebaseAuthRepository
 import com.example.myapplication.ui.fragment.FavoritesFragment
 import com.example.myapplication.ui.recyclerviewadapter.FavoritosAdapter
@@ -20,7 +20,7 @@ import org.koin.dsl.module
 
 val daoModule = module {
     single<FirebaseAuthRepository>{ FirebaseAuthRepository(get()) }
-    single<FavotirosRepository>{ FavotirosRepository(get()) }
+    single<FavoritosRepository>{ FavoritosRepository(get()) }
 }
 
 val viewModelModule = module {

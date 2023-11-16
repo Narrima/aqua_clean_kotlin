@@ -139,4 +139,10 @@
         android:label="@string/logout"
         tools:layout="@layout/fragment_login">
     </fragment>
+
+    <fragment android:id="@+id/nav_verPraia"
+        android:name="com.example.myapplication.ui.fragment.VisualizarPraia"
+        android:label="@string/verPraia"
+        tools:layout="@layout/fragment_visualizar_praia">
+    </fragment>
 </navigation>

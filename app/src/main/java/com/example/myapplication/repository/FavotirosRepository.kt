@@ -8,28 +8,28 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 
 private const val TAG = "FavoritosRepository"
-class FavotirosRepository(private val firestore: FirebaseFirestore) {
+
+class FavoritosRepository(private val firestore: FirebaseFirestore) {
 
     fun buscarFavoritos(): LiveData<List<Favoritos>> {
-        val liveData: MutableLiveData<List<Favoritos>> = MutableLiveData<List<Favoritos>>()
+        val liveData: MutableLiveData<List<Favoritos>> = MutableLiveData()
+
         firestore.collection("favoritos")
             .get()
-            .addOnSuccessListener {
-                it?.let { snapshot: QuerySnapshot ->
-                    val favoritos = mutableListOf<Favoritos>()
-                    for (documento in snapshot.documents) {
-                        Log.i(TAG, "onCreate: favoritos ${documento.data}")
-                        documento.data?.let { dados ->
-                            val praia: String = dados["praia"] as String
-                            val favorito = Favoritos(praia = praia)
-                            favoritos.add(favorito)
-                        }
+            .addOnSuccessListener { snapshot: QuerySnapshot ->
+                val favoritos = mutableListOf<Favoritos>()
+                for (documento in snapshot.documents) {
+                    documento.data?.let { dados ->
+                        val praia: String = dados["praia"] as String
+                        val favorito = Favoritos(praia = praia)
+                        favoritos.add(favorito)
                     }
-                    liveData.value = favoritos
                 }
+                liveData.value = favoritos
             }
-            .addOnFailureListener {
-                Log.e(TAG, "onCrate: Usuário não logado")
+            .addOnFailureListener { exception ->
+                Log.e(TAG, "Erro ao buscar favoritos: $exception")
+                // Aqui você pode tomar alguma ação, como definir um valor de erro na liveData
             }
         return liveData
     }

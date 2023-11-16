@@ -16,4 +16,5 @@
     <string name="reset_password">Recuperar Senha</string>
     <string name="new_password">Criar nova senha</string>
     <string name="pagina_map">Mapa</string>
+    <string name="verPraia">Informações da praia</string>
 </resources>
