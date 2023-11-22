@@ -1,4 +1,5 @@
 package com.example.myapplication.model
 
-class Praia {
-}
+class Praia (
+    val pesquisar: String
+)

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,31 +10,20 @@
     tools:ignore="UnusedAttribute">
 
    <LinearLayout
-       android:id="@+id/linearLayout"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_margin="10dp"
        android:orientation="horizontal"
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintEnd_toEndOf="parent">
+       app:layout_constraintTop_toTopOf="parent">
 
       <TextView
-          android:id="@+id/item_favoritos"
+          android:id="@+id/item_buscar_praia"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_weight="0.8"
+          android:layout_margin="10dp"
+          android:drawablePadding="10dp"
           android:text="texto texto texto texto texto texto texto texto texto texto texto texto texto texto"
           android:textColor="@color/black"
-          android:textSize="18sp"/>
-
-      <ImageView
-          android:layout_width="25dp"
-          android:layout_height="25dp"
-          android:src="@drawable/coracao"
-          android:contentDescription="ícone de coração"
-          app:layout_constraintEnd_toEndOf="parent"/>
-
+          android:textSize="18sp" />
    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

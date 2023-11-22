@@ -16,37 +16,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/buscarPraia"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/pesquisar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/caixa_texto_borda"
-            android:drawableRight="@drawable/lupa"
-            android:gravity="center"
-            android:hint="Pesquisa" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/caixa_lista_fundo"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-        </FrameLayout>
-
-
-    </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

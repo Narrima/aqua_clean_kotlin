@@ -40,9 +40,9 @@
 
     <fragment
         android:id="@+id/nav_assessments"
-        android:name="com.example.myapplication.ui.fragment.AssessmentsFragment"
+        android:name="com.example.myapplication.ui.fragment.BuscarPraiaFragment"
         android:label="@string/menu_Assessments"
-        tools:layout="@layout/fragment_assessments" >
+        tools:layout="@layout/fragment_buscar_praia" >
         <action
             android:id="@+id/action_nav_assessments_to_nav_logout"
             app:destination="@id/nav_logout" />
