@@ -7,14 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.model.Praia
 import com.example.myapplication.ui.recyclerviewadapter.BuscarAdapter
 
-class BuscarPraiaFragment : Fragment() {
+class BuscarPraiaFragment : Fragment(), BuscarAdapter.OnItemClickListener {
 
     private lateinit var editTextPesquisa: EditText
     private lateinit var recyclerView: RecyclerView
@@ -37,30 +41,60 @@ class BuscarPraiaFragment : Fragment() {
 
         // Criando dados de exemplo (substitua isso pelos seus próprios dados)
         listaDePraiasOriginal = listOf(
-            Praia("Nome da Praia 1"),
-            Praia("Nome da Praia 2")
+            Praia("Brasilia"),
+            Praia("São Paulo")
             // Adicione mais itens conforme necessário
         )
 
         // Criando e configurando o adaptador
-        adapter = BuscarAdapter(requireContext(), listaDePraiasOriginal.toMutableList())
+        adapter = BuscarAdapter(requireContext(), listaDePraiasOriginal.toMutableList(), this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // Adicione um TextWatcher para monitorar as alterações no EditText
         editTextPesquisa.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(
+                charSequence: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+            }
 
-            override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun onTextChanged(
+                charSequence: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+            }
 
             override fun afterTextChanged(editable: Editable?) {
                 // Atualiza a lista de praias com base no texto atual
-                adapter.atualizaListaComTextoAtual(listaDePraiasOriginal, editTextPesquisa.text.toString())
+                adapter.atualizaListaComTextoAtual(
+                    listaDePraiasOriginal,
+                    editTextPesquisa.text.toString()
+                )
 
                 // Ajusta a visibilidade do RecyclerView com base no texto na caixa de pesquisa
-                recyclerView.visibility = if (editTextPesquisa.text.isNotEmpty()) View.VISIBLE else View.GONE
+                recyclerView.visibility =
+                    if (editTextPesquisa.text.isNotEmpty()) View.VISIBLE else View.GONE
             }
         })
         return view
     }
+
+    // Lidar com o clique do item
+    // No fragmento onde você está navegando para VisualizarPraiaFragment
+    override fun onItemClick(praia: Praia) {
+        val navController = findNavController()
+        val bundle = Bundle().apply {
+            putString(VisualizarPraiaFragment.ARG_PRAIA_PESQUISAR, praia.pesquisar)
+        }
+        navController.navigate(R.id.nav_verPraia, bundle)
+    }
+
+
+
+
 }

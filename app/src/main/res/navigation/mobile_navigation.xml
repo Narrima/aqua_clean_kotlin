@@ -141,7 +141,7 @@
     </fragment>
 
     <fragment android:id="@+id/nav_verPraia"
-        android:name="com.example.myapplication.ui.fragment.VisualizarPraia"
+        android:name="com.example.myapplication.ui.fragment.VisualizarPraiaFragment"
         android:label="@string/verPraia"
         tools:layout="@layout/fragment_visualizar_praia">
     </fragment>

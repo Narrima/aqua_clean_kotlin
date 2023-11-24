@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Configuração do fundo cinza (pode ajustar o valor da cor como necessário) -->
+    <solid android:color="@color/meiaTransparente" />
+
+    <!-- Configuração da borda -->
+    <stroke
+        android:width="3dp"
+        android:color="#000000" />
+
+    <!-- Configuração dos cantos -->
+    <corners android:radius="0dp" />
+</shape>

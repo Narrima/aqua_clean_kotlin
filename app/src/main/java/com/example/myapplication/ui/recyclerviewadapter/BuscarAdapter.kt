@@ -9,8 +9,13 @@ import com.example.myapplication.model.Praia
 
 class BuscarAdapter(
     private val context: Context,
-    private var listaDeDados: MutableList<Praia> = mutableListOf()
+    private var listaDeDados: MutableList<Praia> = mutableListOf(),
+    private val itemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<BuscarAdapter.ViewHolder>() {
+
+    interface OnItemClickListener {
+        fun onItemClick(praia: Praia)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Infla o layout do item de busca da praia
@@ -32,10 +37,13 @@ class BuscarAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        // Obtém o item da lista na posição atual
         val item = listaDeDados[position]
-        // Define o texto do item de busca da praia com o nome da praia
         holder.vincula(item)
+
+        // Defina o ouvinte de clique na visualização do item
+        holder.itemView.setOnClickListener {
+            itemClickListener.onItemClick(item)
+        }
     }
 
     override fun getItemCount(): Int = listaDeDados.size
