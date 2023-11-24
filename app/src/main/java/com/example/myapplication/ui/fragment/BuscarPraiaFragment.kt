@@ -14,32 +14,36 @@ import com.example.myapplication.R
 import com.example.myapplication.model.Praia
 import com.example.myapplication.ui.recyclerviewadapter.BuscarAdapter
 
-
 class BuscarPraiaFragment : Fragment() {
-    // Remova a propriedade listaLayout se não estiver sendo usada
-    // private lateinit var listaLayout: EditText
 
     private lateinit var editTextPesquisa: EditText
-    private var isListaVisivel = false
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: BuscarAdapter
+
+    // Lista original de praias
+    private lateinit var listaDePraiasOriginal: List<Praia>
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // Infla o layout do fragmento de busca de praia
         val view = inflater.inflate(R.layout.fragment_buscar_praia, container, false)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.lista_buscar_praia_recyclerview)
+
+        // Inicializa os componentes da UI
+        recyclerView = view.findViewById(R.id.lista_buscar_praia_recyclerview)
         editTextPesquisa = view.findViewById(R.id.pesquisar)
 
-        // Criando dados de exemplo (substitua isso com seus próprios dados)
-        val listaDeDados = listOf(
+        // Criando dados de exemplo (substitua isso pelos seus próprios dados)
+        listaDePraiasOriginal = listOf(
             Praia("Nome da Praia 1"),
             Praia("Nome da Praia 2")
             // Adicione mais itens conforme necessário
         )
 
         // Criando e configurando o adaptador
-        val adapter = BuscarAdapter(listaDeDados, requireContext())
+        adapter = BuscarAdapter(requireContext(), listaDePraiasOriginal.toMutableList())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
@@ -50,11 +54,13 @@ class BuscarPraiaFragment : Fragment() {
             override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(editable: Editable?) {
-                // Certifique-se de que a função de atualização é chamada
-                adapter.atualizarListaComNomesAleatorios(editTextPesquisa.text.toString())
+                // Atualiza a lista de praias com base no texto atual
+                adapter.atualizaListaComTextoAtual(listaDePraiasOriginal, editTextPesquisa.text.toString())
+
+                // Ajusta a visibilidade do RecyclerView com base no texto na caixa de pesquisa
+                recyclerView.visibility = if (editTextPesquisa.text.isNotEmpty()) View.VISIBLE else View.GONE
             }
         })
-
         return view
     }
 }

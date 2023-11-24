@@ -25,7 +25,6 @@ class FavoritosAdapter(
 
         private val campoFavoritos by lazy { binding.itemFavoritos }
 
-
         fun vincula(favorito: Favoritos) {
             campoFavoritos.text = favorito.praia
         }

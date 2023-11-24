@@ -2,59 +2,58 @@ package com.example.myapplication.ui.recyclerviewadapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentItemBuscarPraiaBinding
 import com.example.myapplication.model.Praia
 
-class BuscarAdapter(private var listaDeDados: List<Praia>, private val context: Context) :
-    RecyclerView.Adapter<BuscarAdapter.ViewHolder>() {
+class BuscarAdapter(
+    private val context: Context,
+    private var listaDeDados: MutableList<Praia> = mutableListOf()
+) : RecyclerView.Adapter<BuscarAdapter.ViewHolder>() {
 
-    // Método chamado quando o ViewHolder é criado.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        // Infla o layout do item da lista.
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_item_buscar_praia, parent, false)
-        return ViewHolder(view)
+        // Infla o layout do item de busca da praia
+        val binding = FragmentItemBuscarPraiaBinding.inflate(
+            LayoutInflater.from(context),
+            parent,
+            false
+        )
+        return ViewHolder(binding)
     }
 
-    // Método chamado para associar dados à view.
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        // Obtém o item da lista na posição atual.
-        val item = listaDeDados[position]
-        // Define o texto do EditText com o nome da praia.
-        holder.nomeDaPraiaEditText.setText(item.pesquisar)
-    }
+    class ViewHolder(private val binding: FragmentItemBuscarPraiaBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    // Método que retorna a quantidade total de itens na lista.
-    override fun getItemCount(): Int = listaDeDados.size
-
-    // Método utilizado para atualizar a lista com nomes aleatórios com base no texto atual.
-    fun atualizarListaComNomesAleatorios(textoAtual: String) {
-        // Gera pares de nomes aleatórios e atualiza a lista.
-        val paresDeNomes = gerarParesDeNomesAleatorios(textoAtual)
-        listaDeDados = paresDeNomes.map { Praia("${it.first} ${it.second}") }
-        // Notifica a RecyclerView que os dados foram alterados.
-        notifyDataSetChanged()
-    }
-
-    // Método que gera pares de nomes aleatórios com base no texto atual.
-    private fun gerarParesDeNomesAleatorios(textoAtual: String): List<Pair<String, String>> {
-        // Nomes de exemplo para geração aleatória.
-        val primeirosNomes = listOf("Ana", "João", "Maria", "Pedro", "Lucas")
-        val segundosNomes = listOf("Silva", "Oliveira", "Santos", "Pereira", "Costa")
-
-        // Gera pares de nomes aleatórios.
-        return List(10) {
-            Pair(primeirosNomes.random(), segundosNomes.random())
+        // Associa os dados ao layout do item de busca da praia
+        fun vincula(buscarPraia: Praia) {
+            binding.itemBuscarPraia.text = buscarPraia.pesquisar
         }
     }
 
-    // ViewHolder que representa cada item na lista.
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        // EditText no layout do item.
-        val nomeDaPraiaEditText: EditText = itemView.findViewById(R.id.pesquisar)
-            ?: EditText(itemView.context)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        // Obtém o item da lista na posição atual
+        val item = listaDeDados[position]
+        // Define o texto do item de busca da praia com o nome da praia
+        holder.vincula(item)
+    }
+
+    override fun getItemCount(): Int = listaDeDados.size
+
+    // Atualiza a lista de praias com base no texto atual
+    fun atualizaListaComTextoAtual(listaCompleta: List<Praia>, textoAtual: String) {
+        // Reinicializa a lista para a lista original
+        listaDeDados = mutableListOf<Praia>().apply {
+            addAll(listaCompleta)
+        }
+
+        // Filtra a lista de praias com base no texto atual
+        listaDeDados = listaDeDados.filter { it.pesquisar.contains(textoAtual, ignoreCase = true) }.toMutableList()
+        notifyDataSetChanged()
+    }
+
+    companion object {
+        // Lista original de praias
+        private lateinit var listaDePraiasOriginal: List<Praia>
     }
 }
