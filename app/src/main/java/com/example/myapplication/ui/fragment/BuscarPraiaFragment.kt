@@ -17,15 +17,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.model.Praia
 import com.example.myapplication.ui.recyclerviewadapter.BuscarAdapter
+import com.example.myapplication.repository.BuscarList  // Importe a classe BuscarList
 
 class BuscarPraiaFragment : Fragment(), BuscarAdapter.OnItemClickListener {
 
     private lateinit var editTextPesquisa: EditText
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: BuscarAdapter
-
-    // Lista original de praias
-    private lateinit var listaDePraiasOriginal: List<Praia>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,17 +37,16 @@ class BuscarPraiaFragment : Fragment(), BuscarAdapter.OnItemClickListener {
         recyclerView = view.findViewById(R.id.lista_buscar_praia_recyclerview)
         editTextPesquisa = view.findViewById(R.id.pesquisar)
 
-        // Criando dados de exemplo (substitua isso pelos seus próprios dados)
-        listaDePraiasOriginal = listOf(
-            Praia("Brasilia"),
-            Praia("São Paulo")
-            // Adicione mais itens conforme necessário
-        )
+        // Use a lista de praias da classe BuscarList
+        val listaDePraiasOriginal = BuscarList.listaDePraiasSantaCatarina
 
         // Criando e configurando o adaptador
         adapter = BuscarAdapter(requireContext(), listaDePraiasOriginal.toMutableList(), this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        // Ajusta a visibilidade inicial do RecyclerView para GONE
+        recyclerView.visibility = View.GONE
 
         // Adicione um TextWatcher para monitorar as alterações no EditText
         editTextPesquisa.addTextChangedListener(object : TextWatcher {
@@ -59,6 +56,7 @@ class BuscarPraiaFragment : Fragment(), BuscarAdapter.OnItemClickListener {
                 count: Int,
                 after: Int
             ) {
+                // Executa antes de qualquer alteração no texto
             }
 
             override fun onTextChanged(
@@ -67,34 +65,39 @@ class BuscarPraiaFragment : Fragment(), BuscarAdapter.OnItemClickListener {
                 before: Int,
                 count: Int
             ) {
+                // Executa quando o texto está sendo alterado
             }
 
             override fun afterTextChanged(editable: Editable?) {
-                // Atualiza a lista de praias com base no texto atual
+                // Após o texto ser alterado, atualiza a lista de praias com base no texto atual
                 adapter.atualizaListaComTextoAtual(
                     listaDePraiasOriginal,
                     editTextPesquisa.text.toString()
                 )
 
                 // Ajusta a visibilidade do RecyclerView com base no texto na caixa de pesquisa
-                recyclerView.visibility =
-                    if (editTextPesquisa.text.isNotEmpty()) View.VISIBLE else View.GONE
+                ajustarVisibilidadeLista()
             }
         })
+
         return view
     }
 
+    // Método para ajustar a visibilidade do RecyclerView com base no texto na caixa de pesquisa
+    private fun ajustarVisibilidadeLista() {
+        recyclerView.visibility = if (editTextPesquisa.text.isNotEmpty()) View.VISIBLE else View.GONE
+    }
     // Lidar com o clique do item
     // No fragmento onde você está navegando para VisualizarPraiaFragment
     override fun onItemClick(praia: Praia) {
         val navController = findNavController()
+
+        // Criando um bundle para enviar dados para o próximo fragmento
         val bundle = Bundle().apply {
             putString(VisualizarPraiaFragment.ARG_PRAIA_PESQUISAR, praia.pesquisar)
         }
+
+        // Navegando para o fragmento VisualizarPraiaFragment com o bundle
         navController.navigate(R.id.nav_verPraia, bundle)
     }
-
-
-
-
 }

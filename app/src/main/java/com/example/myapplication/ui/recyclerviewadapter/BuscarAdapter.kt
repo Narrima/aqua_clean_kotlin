@@ -54,14 +54,12 @@ class BuscarAdapter(
         listaDeDados = mutableListOf<Praia>().apply {
             addAll(listaCompleta)
         }
-
         // Filtra a lista de praias com base no texto atual
         listaDeDados = listaDeDados.filter { it.pesquisar.contains(textoAtual, ignoreCase = true) }.toMutableList()
         notifyDataSetChanged()
     }
-
     companion object {
         // Lista original de praias
-        private lateinit var listaDePraiasOriginal: List<Praia>
+        //private lateinit var listaDePraiasOriginal: List<Praia>
     }
 }

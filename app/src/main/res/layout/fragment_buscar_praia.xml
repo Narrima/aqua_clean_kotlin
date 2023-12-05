@@ -14,11 +14,28 @@
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintTop_toTopOf="parent">
+        <EditText
+            android:id="@+id/ListUF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/caixa_texto_borda"
+            android:drawableRight="@drawable/down_arrow"
+            android:gravity="center"
+            android:hint="Estado" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@drawable/caixa_lista_fundo"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/fragment_item_buscar_praia_uf" />
+
 
         <EditText
             android:id="@+id/pesquisar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:background="@drawable/caixa_texto_borda"
             android:drawableRight="@drawable/lupa"
             android:gravity="center"
@@ -35,8 +52,6 @@
                 android:background="@drawable/caixa_lista_fundo"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/fragment_item_buscar_praia" />
-
-
 
         </FrameLayout>
 
