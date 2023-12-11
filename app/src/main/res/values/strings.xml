@@ -10,10 +10,11 @@
     <string name="logout">Logout</string>
     <string name="menu_profile">Perfil</string>
     <string name="menu_favorites">Praias favoritas</string>
-    <string name="menu_Assessments">Melhores praias</string>
+    <string name="menu_Assessments">Buscar praias</string>
     <string name="create_account">Criar conta</string>
     <string name="login">Login</string>
     <string name="reset_password">Recuperar Senha</string>
     <string name="new_password">Criar nova senha</string>
     <string name="pagina_map">Mapa</string>
+    <string name="verPraia">Informações da praia</string>
 </resources>

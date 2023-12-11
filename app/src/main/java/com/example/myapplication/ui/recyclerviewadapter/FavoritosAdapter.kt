@@ -3,7 +3,6 @@ package com.example.myapplication.ui.recyclerviewadapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.FragmentItemFavoritosBinding
 import com.example.myapplication.model.Favoritos
@@ -25,7 +24,6 @@ class FavoritosAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         private val campoFavoritos by lazy { binding.itemFavoritos }
-
 
         fun vincula(favorito: Favoritos) {
             campoFavoritos.text = favorito.praia
