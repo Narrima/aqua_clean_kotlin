@@ -1,5 +1,5 @@
 package com.example.myapplication.model
 
-class Favoritos(
-    val praia: String
+data class Favoritos(
+    var nomesPraias: List<String> = emptyList()
 )

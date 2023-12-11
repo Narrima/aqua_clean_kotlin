@@ -6,10 +6,6 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_map"
-            android:icon="@drawable/localizacao"
-            android:title="@string/pagina_map" />
-        <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/usuario"
             android:title="@string/menu_profile" />
@@ -22,13 +18,8 @@
             android:icon="@drawable/premioestrela"
             android:title="@string/menu_Assessments" />
         <item
-            android:id="@+id/nav_verPraia"
-            android:icon="@drawable/logout_box"
-            android:title="@string/verPraia" />
-        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/logout_box"
             android:title="@string/logout" />
-
     </group>
 </menu>

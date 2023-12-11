@@ -3,10 +3,8 @@ package com.example.myapplication.di
 import com.example.myapplication.repository.FavoritosRepository
 import com.example.myapplication.repository.FirebaseAuthRepository
 import com.example.myapplication.ui.fragment.FavoritesFragment
-import com.example.myapplication.ui.recyclerviewadapter.FavoritosAdapter
 import com.example.myapplication.ui.viewModel.CadastroUsuarioViewModel
 import com.example.myapplication.ui.viewModel.EstadoAppViewModel
-import com.example.myapplication.ui.viewModel.FavoritosViewModel
 import com.example.myapplication.ui.viewModel.LoginViewModel
 import com.example.myapplication.ui.viewModel.PerfilUsuarioViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -26,15 +24,10 @@ val viewModelModule = module {
     viewModel<CadastroUsuarioViewModel> { CadastroUsuarioViewModel(get()) }
     viewModel<LoginViewModel> { LoginViewModel(get()) }
     viewModel<PerfilUsuarioViewModel> { PerfilUsuarioViewModel(get()) }
-    viewModel<EstadoAppViewModel>{ EstadoAppViewModel() }
-    viewModel<FavoritosViewModel>{ FavoritosViewModel(get()) }
-
-}
+    viewModel<EstadoAppViewModel>{ EstadoAppViewModel() } }
 
 val uiModule = module {
-    factory<FavoritesFragment> { FavoritesFragment() }
-    factory<FavoritosAdapter> { FavoritosAdapter(get()) }
-}
+    factory<FavoritesFragment> { FavoritesFragment() } }
 
 val firebasemodule = module {
     single<FirebaseAuth> { Firebase.auth }
