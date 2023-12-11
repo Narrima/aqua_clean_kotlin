@@ -26,6 +26,7 @@ class BuscarPraiaFragment : Fragment(), BuscarAdapter.OnItemClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: BuscarAdapter
     private lateinit var listaUFRecyclerView: RecyclerView
+    private lateinit var meuBotao: Button
     private var estadoSelecionado: Estado? = null
 
     override fun onCreateView(
@@ -33,8 +34,12 @@ class BuscarPraiaFragment : Fragment(), BuscarAdapter.OnItemClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         // Infla o layout do fragmento de busca de praia
         val view = inflater.inflate(R.layout.fragment_buscar_praia, container, false)
+
+        // Inicialize a referência ao botão
+        meuBotao = view.findViewById(R.id.ListUF) // Substitua pelo ID correto do seu botão
 
         // Inicializa os componentes da UI
         recyclerView = view.findViewById(R.id.lista_buscar_praia_recyclerview)
@@ -162,6 +167,9 @@ class BuscarPraiaFragment : Fragment(), BuscarAdapter.OnItemClickListener {
 
             // Atualiza a lista de praias no adaptador do RecyclerView
             adapter.atualizaListaComTextoAtual(listaDePraias, editTextPesquisa.text.toString())
+
+            // Atualiza o texto do botão com o nome do estado selecionado
+            meuBotao.text = estado.nome
 
             // Esconde o RecyclerView de estados
             listaUFRecyclerView.visibility = View.GONE
