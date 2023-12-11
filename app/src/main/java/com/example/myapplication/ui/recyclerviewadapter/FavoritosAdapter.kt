@@ -1,47 +1,30 @@
 package com.example.myapplication.ui.recyclerviewadapter
 
-import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.databinding.FragmentItemFavoritosBinding
-import com.example.myapplication.model.Favoritos
+import com.example.myapplication.R
 
-class FavoritosAdapter(
-    private val context: Context,
-    private val favoritos: MutableList<Favoritos> = mutableListOf()
-) : RecyclerView.Adapter<FavoritosAdapter.ViewHolder>(){
+class FavoritosAdapter(private val praias: List<String>) : RecyclerView.Adapter<FavoritosAdapter.ViewHolder>() {
 
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val nomePraiaTextView: TextView = itemView.findViewById(R.id.item_favoritos)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = FragmentItemFavoritosBinding.inflate(
-            LayoutInflater.from(context)
-        )
-        return ViewHolder(binding)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_item_favoritos, parent, false)
+        return ViewHolder(view)
     }
-
-    class ViewHolder(binding: FragmentItemFavoritosBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        private val campoFavoritos by lazy { binding.itemFavoritos }
-
-        fun vincula(favorito: Favoritos) {
-            campoFavoritos.text = favorito.praia
-        }
-    }
-
-    override fun getItemCount() = favoritos.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val favorito = favoritos[position]
-        holder.vincula(favorito)
+        val praia = praias[position]
+        holder.nomePraiaTextView.text = praia
+        // Configurar outros elementos conforme necessário
     }
 
-    fun atualiza(listaFavoritos: List<Favoritos>) {
-        notifyItemRangeRemoved(0, favoritos.size)
-        favoritos.clear()
-        favoritos.addAll(listaFavoritos)
-        notifyItemRangeInserted(0, favoritos.size)
+    override fun getItemCount(): Int {
+        return praias.size
     }
-
 }
