@@ -11,6 +11,6 @@
     <color name="botao1">#80FF00</color>
     <color name="transparente">#00000000</color>
     <color name="estrela_favorita">#00FF0A</color>
-    <color name="meiaTransparente">#4D000000</color>
+    <color name="meiaTransparente">#CC9A9A9A</color>
 
 </resources>

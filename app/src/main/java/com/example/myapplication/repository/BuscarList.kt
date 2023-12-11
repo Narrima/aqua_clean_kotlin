@@ -1,16 +1,135 @@
 package com.example.myapplication.repository
+import com.example.myapplication.model.Estado
 import com.example.myapplication.model.Praia
 
 
 class BuscarList {
     companion object {
-        val listaDeEstados: List<Praia> by lazy {
+        val listaDeEstados: List<Estado> by lazy {
             // Inicialize a lista de praias de Santa Catarina aqui
             listOf(
-                Praia("SANTA CATARINA"),
-                Praia("SÃO PAULO"),
-                Praia("BAHIA"),
+                Estado("AMAPA"),
+                Estado("MARANHÃO"),
+                Estado("PIAUÍ"),
+                Estado("CEARÁ"),
+                Estado("RIO GRANDE DO NORTE"),
+                Estado("PARAÍBA"),
+                Estado("PERNAMBUCO"),
+                Estado("ALAGOAS"),
+                Estado("SERGIPE"),
+                Estado("BAHIA"),
+                Estado("ESPÍRITO SANTO"),
+                Estado("RIO DE JANEIRO"),
+                Estado("SÃO PAULO"),
+                Estado("PARANÁ"),
+                Estado("SANTA CATARINA"),
+                Estado("RIO GRANDE DO SUL"),
                 // Adicione mais itens conforme necessário
+            )
+        }
+        val listaDePraiasAmapa: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
+            )
+        }
+
+        val listaDePraiasMaranhao: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
+            )
+        }
+        val listaDePraiasPiaui: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
+            )
+        }
+
+        val listaDePraiasCeara: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
+            )
+        }
+        val listaDePraiasRioGrandeDoNorte: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
+            )
+        }
+
+        val listaDePraiasParnaiba: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
+            )
+        }
+        val listaDePraiasPernambuco: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
+            )
+        }
+
+        val listaDePraiasAlagoas: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
+            )
+        }
+        val listaDePraiasSergipe: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
+            )
+        }
+
+        val listaDePraiasBahia: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
+            )
+        }
+        val listaDePraiasEspiritoSanto: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
+            )
+        }
+
+        val listaDePraiasRioDeJaneiro: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
+            )
+        }
+        val listaDePraiasSaoPaulo: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
+            )
+        }
+
+        val listaDePraiasParana: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
             )
         }
 
@@ -42,7 +161,7 @@ class BuscarList {
                 Praia("PRAIA DA SOLIDÃO"),
                 Praia("PRAIA DA TAPERA"),
                 Praia("PRAIA DA VIGIA"),
-                Praia("PRAIA DAS GAIVOTAS"),
+                Praia("BALNEÁRIO GAIVOTAS"),
                 Praia("PRAIA DAS PALMEIRAS"),
                 Praia("PRAIA DE BOMBAS"),
                 Praia("PRAIA DE BOMBINHAS"),
@@ -86,6 +205,13 @@ class BuscarList {
                 Praia("PRAIA DOS INGLESES"),
                 Praia("PRAIA MOLE"),
                 // Adicione mais itens conforme necessário
+            )
+        }
+        val listaDePraiasRioGrandeDoSul: List<Praia> by lazy {
+            // Inicialize a lista de praias de Santa Catarina aqui
+            listOf(
+                Praia("SaoPaulo"),
+                Praia("SaoPaulo1"),
             )
         }
     }

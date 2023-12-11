@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.FragmentItemBuscarPraiaBinding
+import com.example.myapplication.model.Estado
 import com.example.myapplication.model.Praia
 
 class BuscarAdapter(
@@ -13,10 +14,11 @@ class BuscarAdapter(
     private val itemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<BuscarAdapter.ViewHolder>() {
 
+    // Interface no arquivo BuscarAdapter.kt
     interface OnItemClickListener {
         fun onItemClick(praia: Praia)
+        fun onEstadoItemClick(estado: Estado?)
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Infla o layout do item de busca da praia
         val binding = FragmentItemBuscarPraiaBinding.inflate(
@@ -51,11 +53,12 @@ class BuscarAdapter(
     // Atualiza a lista de praias com base no texto atual
     fun atualizaListaComTextoAtual(listaCompleta: List<Praia>, textoAtual: String) {
         // Reinicializa a lista para a lista original
-        listaDeDados = mutableListOf<Praia>().apply {
-            addAll(listaCompleta)
-        }
+        listaDeDados.clear()
+        listaDeDados.addAll(listaCompleta)
+
         // Filtra a lista de praias com base no texto atual
         listaDeDados = listaDeDados.filter { it.pesquisar.contains(textoAtual, ignoreCase = true) }.toMutableList()
+
         notifyDataSetChanged()
     }
     companion object {

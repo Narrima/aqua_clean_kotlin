@@ -19,6 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import java.io.IOException
+import java.util.Locale
 
 class VisualizarPraiaFragment : Fragment(), OnMapReadyCallback {
 
@@ -29,17 +30,9 @@ class VisualizarPraiaFragment : Fragment(), OnMapReadyCallback {
     private var googleMap: GoogleMap? = null
 
     companion object {
-        const val ARG_PRAIA_PESQUISAR = "praia_titulo"
-
-        fun newInstance(pesquisar: String): VisualizarPraiaFragment {
-            val fragment = VisualizarPraiaFragment()
-            val args = Bundle()
-            args.putString(ARG_PRAIA_PESQUISAR, pesquisar)
-            fragment.arguments = args
-            return fragment
-        }
+        const val ARG_PRAIA_PESQUISAR = "arg_praia_pesquisar"
+        const val ARG_ESTADO_SELECIONADO = "arg_estado_selecionado"
     }
-
     @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -95,12 +88,12 @@ class VisualizarPraiaFragment : Fragment(), OnMapReadyCallback {
             true
         }
     }
-
     private fun initializeMap() {
         // Verifica se o mapa já foi inicializado e se o contêiner do mapa é visível
         if (googleMap == null && binding.containerVisualizarPraia.visibility == View.VISIBLE) {
             // Inicializa o SupportMapFragment
-            val mapFragment = childFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+            val mapFragment =
+                childFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
             mapFragment?.getMapAsync(this)
         }
     }
@@ -109,37 +102,53 @@ class VisualizarPraiaFragment : Fragment(), OnMapReadyCallback {
         this.googleMap = googleMap
 
         arguments?.getString(ARG_PRAIA_PESQUISAR)?.let { titulo ->
+            // Verifica se o estado foi selecionado na tela anterior
+            val estadoSelecionado = arguments?.getString(ARG_ESTADO_SELECIONADO)
+
             // Realiza a geocodificação em uma AsyncTask
-            GeocodeAsyncTask().execute(titulo)
+            GeocodeAsyncTask().execute(titulo, estadoSelecionado)
         }
     }
 
     // AsyncTask para realizar a geocodificação em uma thread separada
     @SuppressLint("StaticFieldLeak")
-    private inner class GeocodeAsyncTask : AsyncTask<String, Void, LatLng?>() {
-        override fun doInBackground(vararg params: String): LatLng? {
+    private inner class GeocodeAsyncTask : AsyncTask<String, Void, Pair<LatLng?, String?>>() {
+        override fun doInBackground(vararg params: String): Pair<LatLng?, String?> {
             val address = params[0]
-            val geocoder = Geocoder(requireContext())
+            val estado = params[1]
+            val geocoder = Geocoder(requireContext(), Locale("pt", "BR"))
 
             try {
-                val results: MutableList<Address>? = geocoder.getFromLocationName(address, 1) as? MutableList<Address>
+                // Obtém a lista de endereços usando o nome da praia e o estado
+                val results: MutableList<Address>? = geocoder.getFromLocationName("$address, $estado", 1) as? MutableList<Address>
                 if (results != null && results.isNotEmpty()) {
-                    return LatLng(results[0].latitude, results[0].longitude)
+                    val latLng = LatLng(results[0].latitude, results[0].longitude)
+                    val postalAddress = results[0].getAddressLine(0) // Obtém o endereço postal
+
+                    return Pair(latLng, postalAddress)
                 }
             } catch (e: IOException) {
                 e.printStackTrace()
             }
 
-            return null
+            return Pair(null, null)
         }
 
-        override fun onPostExecute(latLng: LatLng?) {
+        override fun onPostExecute(result: Pair<LatLng?, String?>) {
+            val latLng = result.first
+            val postalAddress = result.second
+
             if (latLng != null) {
                 // Move a câmera para a nova posição
                 googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
 
                 // Adiciona um marcador para a posição
-                googleMap?.addMarker(MarkerOptions().position(latLng).title(arguments?.getString(ARG_PRAIA_PESQUISAR)))
+                googleMap?.addMarker(
+                    MarkerOptions().position(latLng).title(arguments?.getString(ARG_PRAIA_PESQUISAR))
+                )
+
+                // Atualiza o TextView com o endereço postal iniciando com "Endereço: "
+                binding.textView2.text = "Endereço: $postalAddress"
             } else {
                 // Em caso de falha na geocodificação, pode lidar aqui
             }

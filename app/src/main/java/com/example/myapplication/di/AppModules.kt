@@ -1,6 +1,5 @@
 package com.example.myapplication.di
 
-import com.example.myapplication.databinding.FragmentListaFavoritosBinding
 import com.example.myapplication.repository.FavoritosRepository
 import com.example.myapplication.repository.FirebaseAuthRepository
 import com.example.myapplication.ui.fragment.FavoritesFragment

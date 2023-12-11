@@ -14,18 +14,22 @@
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintTop_toTopOf="parent">
-        <EditText
+
+        <Button
             android:id="@+id/ListUF"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="37dp"
             android:background="@drawable/caixa_texto_borda"
             android:drawableRight="@drawable/down_arrow"
             android:gravity="center"
-            android:hint="Estado" />
+            android:text="Selecione o estado"
+            android:textSize="15dp"
+            android:textColor="@color/black" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lista_uf_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/caixa_lista_fundo"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/fragment_item_buscar_praia_uf" />
@@ -34,7 +38,7 @@
         <EditText
             android:id="@+id/pesquisar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="37dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/caixa_texto_borda"
             android:drawableRight="@drawable/lupa"
