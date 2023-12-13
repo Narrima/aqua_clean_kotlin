@@ -13,7 +13,6 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.ktx.Firebase
 import java.lang.Exception
 
 private val TAG = "FirebaseAuthRepository"
@@ -62,6 +61,10 @@ class FirebaseAuthRepository(private val firebaseAuth: FirebaseAuth) {
 
     fun fazerLogout() {
         firebaseAuth.signOut()
+    }
+
+    fun recuperarSenha(email : String){
+        firebaseAuth.sendPasswordResetEmail(email)
     }
 
     fun autentica(usuario: Usuario) : LiveData<Resource<Boolean>> {

@@ -97,19 +97,8 @@
         android:name="com.example.myapplication.ui.fragment.ResetPassword"
         android:label="@string/reset_password"
         tools:layout="@layout/fragment_reset_password">
-        <action
-            android:id="@+id/action_nav_reset_password_to_nav_new_password"
-            app:destination="@id/nav_new_password" />
     </fragment>
 
-    <fragment android:id="@+id/nav_new_password"
-        android:name="com.example.myapplication.ui.fragment.NewPasswordFragment"
-        android:label="@string/new_password"
-        tools:layout="@layout/fragment_new_password">
-        <action
-            android:id="@+id/action_nav_new_password_to_nav_login"
-            app:destination="@id/nav_login" />
-    </fragment>
 
     <fragment android:id="@+id/nav_map"
         android:name="com.example.myapplication.ui.fragment.MapFragment"

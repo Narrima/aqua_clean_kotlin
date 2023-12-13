@@ -19,4 +19,8 @@ class LoginViewModel(private val firebaseAuthRepository: FirebaseAuthRepository)
     fun estalogado(): Boolean = firebaseAuthRepository.estalogado()
 
     fun naoEstalogado(): Boolean = !estalogado()
+
+    fun recuperarSenha(email : String) {
+        return firebaseAuthRepository.recuperarSenha(email)
+    }
 }
