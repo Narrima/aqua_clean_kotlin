@@ -53,7 +53,7 @@ class FavoritosRepository(private val firestore: FirebaseFirestore) {
                         val nomeCampo = "praia$i"
                         val estadoCampo = "estado$i"
 
-                        if (dados?.get(nomeCampo) == null || dados.get(nomeCampo) == "VAZIO") {
+                        if (dados?.get(nomeCampo) == null || dados.get(nomeCampo) == "") {
                             // Campo encontrado, atualiza os dados
                             val novoDados = hashMapOf<String, Any>(
                                 nomeCampo to nomePraia,
@@ -98,9 +98,9 @@ class FavoritosRepository(private val firestore: FirebaseFirestore) {
                     if (dados?.get(nomeCampo) == nomePraia) {
                         // A praia foi encontrada, remove os dados
                         val novoDados = hashMapOf<String, Any>(
-                            nomeCampo to "VAZIO",
-                            "estado$i" to "VAZIO",
-                            "nota$i" to "VAZIO" // Atualize conforme necessário
+                            nomeCampo to "",
+                            "estado$i" to "",
+                            "nota$i" to "" // Atualize conforme necessário
                         )
 
                         favoritosRef.update(novoDados)
@@ -197,36 +197,36 @@ class FavoritosRepository(private val firestore: FirebaseFirestore) {
                 if (!documentSnapshot.exists()) {
                     // Documento não existe, cria o documento com 15 campos vazios
                     val dadosIniciais = hashMapOf(
-                        "praia1" to "VAZIO",
-                        "estado1" to "VAZIO",
-                        "nota1" to "VAZIO",
-                        "praia2" to "VAZIO",
-                        "estado2" to "VAZIO",
-                        "nota2" to "VAZIO",
-                        "praia3" to "VAZIO",
-                        "estado3" to "VAZIO",
-                        "nota3" to "VAZIO",
-                        "praia4" to "VAZIO",
-                        "estado4" to "VAZIO",
-                        "nota4" to "VAZIO",
-                        "praia5" to "VAZIO",
-                        "estado5" to "VAZIO",
-                        "nota5" to "VAZIO",
-                        "praia6" to "VAZIO",
-                        "estado6" to "VAZIO",
-                        "nota6" to "VAZIO",
-                        "praia7" to "VAZIO",
-                        "estado7" to "VAZIO",
-                        "nota7" to "VAZIO",
-                        "praia8" to "VAZIO",
-                        "estado8" to "VAZIO",
-                        "nota8" to "VAZIO",
-                        "praia9" to "VAZIO",
-                        "estado9" to "VAZIO",
-                        "nota9" to "VAZIO",
-                        "praia10" to "VAZIO",
-                        "estado10" to "VAZIO",
-                        "nota10" to "VAZIO"
+                        "praia1" to "",
+                        "estado1" to "",
+                        "nota1" to "",
+                        "praia2" to "",
+                        "estado2" to "",
+                        "nota2" to "",
+                        "praia3" to "",
+                        "estado3" to "",
+                        "nota3" to "",
+                        "praia4" to "",
+                        "estado4" to "",
+                        "nota4" to "",
+                        "praia5" to "",
+                        "estado5" to "",
+                        "nota5" to "",
+                        "praia6" to "",
+                        "estado6" to "",
+                        "nota6" to "",
+                        "praia7" to "",
+                        "estado7" to "",
+                        "nota7" to "",
+                        "praia8" to "",
+                        "estado8" to "",
+                        "nota8" to "",
+                        "praia9" to "",
+                        "estado9" to "",
+                        "nota9" to "",
+                        "praia10" to "",
+                        "estado10" to "",
+                        "nota10" to ""
                     )
 
                     favoritosRef.set(dadosIniciais)

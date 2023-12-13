@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -76,7 +77,7 @@ class VisualizarPraiaFragment : Fragment(), OnMapReadyCallback {
             binding.containerVisualizarPraia.visibility = View.VISIBLE
         }
         verificarPraiaNoBancoDeDados()
-
+        aprovadoOuReprovado()
         return view
     }
 
@@ -253,10 +254,6 @@ class VisualizarPraiaFragment : Fragment(), OnMapReadyCallback {
             onErroVerificarPraia("Erro ao verificar documento para praia favorita: $e")
         }
 
-
-
-
-
     }
 
     private fun verificarPraiaNoBancoDeDados() {
@@ -296,5 +293,8 @@ class VisualizarPraiaFragment : Fragment(), OnMapReadyCallback {
         }.addOnFailureListener { e ->
             onErroVerificarPraia("Erro ao verificar documento para praia favorita: $e")
         }
+    }
+    private fun aprovadoOuReprovado() {
+        binding.valorAprovado.text = if (ARG_PRAIA_PESQUISAR.length % 2 != 0) "Aprovado" else "Reprovado"
     }
 }
