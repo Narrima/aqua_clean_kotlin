@@ -7,10 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.example.myapplication.R
-import com.example.myapplication.databinding.FragmentLoginBinding
 import com.example.myapplication.databinding.FragmentProfileBinding
-import com.example.myapplication.model.Usuario
 import com.example.myapplication.ui.viewModel.PerfilUsuarioViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,10 +35,12 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.usuario.observe(viewLifecycleOwner, Observer {
+        viewModel.usuario.observe(viewLifecycleOwner) {
             it?.let { usuario ->
                 binding.meuPerfilEmail.text = usuario.email
+                binding.meuPerfilNomeUsuario.text = usuario.nome
+                binding.meuPerfilAtivoDesde.text = usuario.data
             }
-        })
+        }
     }
 }

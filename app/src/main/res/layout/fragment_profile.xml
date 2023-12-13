@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/corFundo">
@@ -68,14 +67,12 @@
                 android:text="Nome do Usuário:"
                 android:textSize="18sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/meu_perfil_nome_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:gravity="top|start"
-                android:hint="Digite o segundo texto"
-                android:inputType="text"
                 android:lines="2" />
 
         </LinearLayout>

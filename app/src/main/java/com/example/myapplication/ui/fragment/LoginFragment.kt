@@ -108,6 +108,10 @@ class LoginFragment : Fragment() {
                })
            }
         }
+
+        binding.linkRecuperarSenha.setOnClickListener {
+            findNavController().navigate(R.id.nav_reset_password)
+        }
     }
 
     private fun validaCamposVazios(email: String, senha: String): Boolean {
